@@ -14,7 +14,13 @@ import TodoInput from './components/Todo/TodoInput/TodoInput';
 function App() {
   const [todos, setTodos] = useState(todos_data);
 
-  const renderItem = ({item}) => <TodoItem todo={item.title} />;
+  const renderItem = ({item}) => (
+    <TodoItem
+      todo={item}
+      toggleComplete={() => toggleComplete(item.id)}
+      deleteTodo={() => deleteTodo(item.id)}
+    />
+  );
 
   function addNewTodo(todo) {
     setTodos([
@@ -23,14 +29,24 @@ function App() {
     ]);
   }
 
+  function toggleComplete(id) {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? {...todo, completed: !todo.completed} : todo,
+      ),
+    );
+  }
+  function deleteTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
   return (
     <View style={styles.container}>
-      <Header />
+      <Header todos={todos} />
       <View style={styles.todo_list}>
         <FlatList
           data={todos}
           renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={todo => todo.id}
         />
       </View>
       <TodoInput addNewTodo={addNewTodo} />
@@ -38,12 +54,14 @@ function App() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#E8EAED',
   },
+  todo_list: {
+    marginTop: 20,
+  }
 });
 
 export default App;
