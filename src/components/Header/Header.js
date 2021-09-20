@@ -6,11 +6,9 @@ function Header({todos}) {
   const notCompletedTodos = todos.filter(todo => todo.completed === false);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Today's tasks </Text>
-      <View style={styles.tasksWrapper}>
-        <Text>{completedTodos.length} task completed </Text>
-        <Text>{notCompletedTodos.length} task not completed yet </Text>
-      </View>
+      <Text style={styles.title}>Today's tasks </Text>
+        {/* <Text>{completedTodos.length} task completed </Text> */}
+        <Text style={styles.count}>{notCompletedTodos.length}</Text>
     </View>
   );
 }

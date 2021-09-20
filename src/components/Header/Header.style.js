@@ -10,26 +10,17 @@ export default StyleSheet.create({
     paddingTop: 60,
     paddingHorizontal: 15,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     // marginTop: 20,
   },
-  text: {
+  title: {
     fontWeight: 'bold',
     fontSize: 24,
   },
-  tasksWrapper:{
-    flexDirection: 'column',
-  },
-  completedTaskWrapper: {
-    width: 160,
-    height: 100,
-    backgroundColor: '#fff',
-    borderRadius: 15,
-  },
-  notCompletedTaskWrapper: {
-    width: 160,
-    height: 100,
-    backgroundColor: '#fff',
-    borderRadius: 15,
-  },
+  count: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'green',
+  }
 });

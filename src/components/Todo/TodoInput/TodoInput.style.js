@@ -4,7 +4,7 @@ export default StyleSheet.create({
   container: {},
   inputWrapper: {
     position: 'absolute',
-    bottom: -400,
+    bottom: 20,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',

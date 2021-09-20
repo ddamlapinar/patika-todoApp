@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   },
   todo_list: {
     marginTop: 20,
+    flex: 1,
   }
 });
 
