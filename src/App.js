@@ -6,6 +6,7 @@ import {
   TextInput,
   Button,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import todos_data from './todos.json';
 import Header from './components/Header';
@@ -37,7 +38,22 @@ function App() {
     );
   }
   function deleteTodo(id) {
-    setTodos(todos.filter(todo => todo.id !== id));
+    // setTodos(todos.filter(todo => todo.id !== id));
+    Alert.alert(
+      'Delete Task',
+      'Are you sure you sure you want to delete this task?',
+      [
+        {
+          text: 'NO',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'YES',
+          onPress: () => setTodos(todos.filter(todo => todo.id !== id)),
+        },
+      ],
+    );
   }
   return (
     <View style={styles.container}>
@@ -62,7 +78,7 @@ const styles = StyleSheet.create({
   todo_list: {
     marginTop: 20,
     flex: 1,
-  }
+  },
 });
 
 export default App;
